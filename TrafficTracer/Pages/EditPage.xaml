@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TrafficTracer.ViewModels"
+             xmlns:model="clr-namespace:TrafficTracer.Models"
+             x:Class="TrafficTracer.Pages.EditPage"
+             x:DataType="vm:EditViewModel">
+
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <Label Text="Modifier une Immatriculation"
+               FontSize="24"
+               FontAttributes="Bold" />
+
+        <Entry Placeholder="Plaque" Text="{Binding Immatriculation.Plate}" />
+
+        <Picker Title="Type de plaque"
+                ItemsSource="{Binding PlateTypes}"
+                SelectedItem="{Binding Immatriculation.Type}" />
+        
+        <DatePicker Date="{Binding Immatriculation.ReadDate}" />
+
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+            <Button Text="Modifier" Command="{Binding EditCommand}" CommandParameter="{Binding Immatriculation}" />
+            <Button Text="Supprimer" Command="{Binding DeleteCommand}" CommandParameter="{Binding Immatriculation}" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

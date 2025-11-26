@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TrafficTracer.ViewModels"
+             xmlns:model="clr-namespace:TrafficTracer.Models"
+             x:Class="TrafficTracer.Pages.MainPage"
+             x:DataType="vm:MainViewModel">
+
+    <VerticalStackLayout>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+                
+            <Label Grid.Column="0" Text="Immatriculations"
+                   FontSize="24"
+                   VerticalOptions="Center"
+                   FontAttributes="Bold" />
+                
+            <Button Grid.Column="1" Text="Créer"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Command="{Binding OpenCreateCommand}" />
+        </Grid>
+        <CollectionView SelectionMode="Single"
+                        ItemsSource="{Binding Immatriculations}"
+                        SelectionChangedCommand="{Binding OpenEditCommand}"
+                        SelectionChangedCommandParameter="{Binding Path=SelectedItem, Source={RelativeSource Self}}"
+                        Margin="10">
+            
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Immatriculation">
+                    <Border Margin="0,0,0,10" Padding="10" StrokeShape="RoundRectangle 5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <HorizontalStackLayout Grid.Column="0" Spacing="10">
+                                <Label Text="{Binding Plate}" VerticalOptions="Center" FontAttributes="Bold" FontSize="15" />
+                                <Label Text="{Binding ReadDate}" VerticalOptions="Center" FontSize="12" />
+                            </HorizontalStackLayout>
+
+                            <Label Grid.Column="1"
+                                   Text="{Binding Type}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
