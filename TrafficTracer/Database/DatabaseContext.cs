@@ -24,9 +24,9 @@ public partial class DatabaseContext : DbContext
             if (context.Set<Immatriculation>().Any()) return;
             
             context.Set<Immatriculation>().AddRange(
-                new Immatriculation { Plate = "123AB456", Type = PlateType.FNI, ReadDate = DateTime.Now.AddDays(-10) },
-                new Immatriculation { Plate = "AB123CD75", Type = PlateType.SIV, ReadDate = DateTime.Now.AddDays(-5) },
-                new Immatriculation { Plate = "EF789GH13", Type = PlateType.SIV, ReadDate = DateTime.Now.AddDays(-2) }
+                new Immatriculation { Plate = "9876YZ69", Type = PlateType.FNI, ReadDate = DateTime.Now.AddDays(-10) },
+                new Immatriculation { Plate = "AB-123-CD", Type = PlateType.SIV, ReadDate = DateTime.Now.AddDays(-5) },
+                new Immatriculation { Plate = "LM-456-NO", Type = PlateType.SIV, ReadDate = DateTime.Now.AddDays(-2) }
             );
             
             context.SaveChanges();
