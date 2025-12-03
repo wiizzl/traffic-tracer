@@ -44,7 +44,7 @@
 
                             <HorizontalStackLayout Grid.Column="0" Spacing="10">
                                 <Label Text="{Binding Plate}" VerticalOptions="Center" FontAttributes="Bold" FontSize="15" />
-                                <Label Text="{Binding ReadDate}" VerticalOptions="Center" FontSize="12" />
+                                <Label Text="{Binding ReadDate, StringFormat='{}{0:dd/MM/yyyy}'}" VerticalOptions="Center" FontSize="12" />
                             </HorizontalStackLayout>
 
                             <Label Grid.Column="1"
