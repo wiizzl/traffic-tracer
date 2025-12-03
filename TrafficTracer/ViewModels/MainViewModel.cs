@@ -19,6 +19,11 @@ public partial class MainViewModel : ObservableObject
         Immatriculations = new ObservableCollection<Immatriculation>(_databaseService.GetImmatriculations());
     }
     
+    public void OnAppearing()
+    {
+        Immatriculations = new ObservableCollection<Immatriculation>(_databaseService.GetImmatriculations());
+    }
+    
     [RelayCommand]
     private void OpenCreate()
     {
